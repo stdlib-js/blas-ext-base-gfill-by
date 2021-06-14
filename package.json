@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/blas-ext-base-gfill-by",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Fill a strided array according to a provided callback function.",
   "license": "Apache-2.0",
   "author": {

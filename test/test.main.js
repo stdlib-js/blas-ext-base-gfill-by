@@ -25,7 +25,7 @@ var Float64Array = require( '@stdlib/array-float64' );
 var Complex128Array = require( '@stdlib/array-complex128' );
 var Complex128 = require( '@stdlib/complex-float64' );
 var reinterpret128 = require( '@stdlib/strided-base-reinterpret-complex128' );
-var gfillBy = require( './../lib/gfill_by.js' );
+var gfillBy = require( './../lib' );
 
 
 // FUNCTIONS //

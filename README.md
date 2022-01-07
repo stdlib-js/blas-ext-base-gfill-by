@@ -60,7 +60,7 @@ gfillBy( x.length, x, 1, fill );
 The function has the following parameters:
 
 -   **N**: number of indexed elements.
--   **x**: input [`Array`][mdn-array], [`typed array`][mdn-typed-array], or an array-like object (excluding strings and functions). 
+-   **x**: input array. 
 -   **stride**: index increment.
 -   **clbk**: callback function.
 -   **thisArg**: execution context (_optional_).
@@ -172,6 +172,7 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 ## Notes
 
 -   If `N <= 0`, both functions return `x` unchanged.
+-   Both functions support array-like objects having getter and setter accessors for array element access (e.g., [`@stdlib/array/complex64`][@stdlib/array/complex64]).
 -   When filling a strided array with a scalar constant, prefer using [`dfill`][@stdlib/blas/ext/base/dfill], [`sfill`][@stdlib/blas/ext/base/sfill], and/or [`gfill`][@stdlib/blas/ext/base/gfill], as, depending on the environment, these interfaces are likely to be significantly more performant.
 
 </section>
@@ -287,9 +288,9 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/blas-ext-base-gfill-by/main/LICENSE
 
-[mdn-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array
-
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
+
+[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64
 
 [@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill
 

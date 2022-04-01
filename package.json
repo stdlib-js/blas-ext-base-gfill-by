@@ -1,0 +1,38 @@
+{
+  "name": "@stdlib/blas-ext-base-gfill-by",
+  "version": "0.0.0",
+  "description": "Fill a strided array according to a provided callback function.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./mod.js",
+  "homepage": "https://stdlib.io",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/stdlib-js/blas-ext-base-gfill-by.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stdlib-js/stdlib/issues"
+  },
+  "keywords": [
+    "stdlib",
+    "stdmath",
+    "mathematics",
+    "math",
+    "blas",
+    "extended",
+    "fill",
+    "assign",
+    "set",
+    "equal",
+    "copy",
+    "broadcast",
+    "constant",
+    "strided",
+    "array",
+    "ndarray"
+  ],
+  "funding": {
+    "type": "patreon",
+    "url": "https://www.patreon.com/athan"
+  }
+}

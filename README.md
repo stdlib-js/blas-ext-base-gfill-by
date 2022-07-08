@@ -53,7 +53,9 @@ If no recognized module system is present, access bundle contents via the global
 ```html
 <script type="text/javascript">
 (function () {
+(function () {
     window.gfillBy;
+})();
 })();
 </script>
 ```
@@ -211,6 +213,7 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@umd/browser.js"></script>
 <script type="text/javascript">
 (function () {
+(function () {
 
 function fill() {
     var rand = round( randu()*100.0 );
@@ -229,6 +232,7 @@ console.log( x );
 gfillBy( x.length, x, 1, fill );
 console.log( x );
 
+})();
 })();
 </script>
 </body>
@@ -324,15 +328,15 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64/tree/umd
+[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64/tree/umd/tree/umd
 
-[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill/tree/umd
+[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill/tree/umd/tree/umd
 
-[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill/tree/umd
+[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill/tree/umd/tree/umd
 
 <!-- <related-links> -->
 
-[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill/tree/umd
+[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill/tree/umd/tree/umd
 
 <!-- </related-links> -->
 

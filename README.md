@@ -31,13 +31,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@esm/index.mjs';
+import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.0.10-esm/index.mjs';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@esm/index.mjs';
+import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.0.10-esm/index.mjs';
 ```
 
 #### gfillBy( N, x, stride, clbk\[, thisArg] )
@@ -192,7 +192,7 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 import round from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@esm/index.mjs';
 import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@esm/index.mjs';
 import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@esm/index.mjs';
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@esm/index.mjs';
+import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.0.10-esm/index.mjs';
 
 function fill() {
     var rand = round( randu()*100.0 );

@@ -24,20 +24,30 @@ limitations under the License.
 
 > Fill a strided array according to a provided callback function.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-gfill-by
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
-```
-
-You can also import the following named exports from the package:
-
-```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+var gfillBy = require( '@stdlib/blas-ext-base-gfill-by' );
 ```
 
 #### gfillBy( N, x, stride, clbk\[, thisArg] )
@@ -94,7 +104,7 @@ var cnt = context.count;
 The `N` and `stride` parameters determine which elements in `x` are accessed at runtime. For example, to fill every other element
 
 ```javascript
-import floor from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-floor@deno/mod.js';
+var floor = require( '@stdlib/math-base-special-floor' );
 
 function fill( v, i ) {
     return v * i;
@@ -110,8 +120,8 @@ gfillBy( N, x, 2, fill );
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
 
 ```javascript
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
-import floor from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-floor@deno/mod.js';
+var Float64Array = require( '@stdlib/array-float64' );
+var floor = require( '@stdlib/math-base-special-floor' );
 
 function fill( v, i ) {
     return v * i;
@@ -170,7 +180,7 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 ## Notes
 
 -   If `N <= 0`, both functions return `x` unchanged.
--   Both functions support array-like objects having getter and setter accessors for array element access (e.g., [`@stdlib/array/complex64`][@stdlib/array/complex64]).
+-   Both functions support array-like objects having getter and setter accessors for array element access (e.g., [`@stdlib/array-complex64`][@stdlib/array/complex64]).
 -   When filling a strided array with a scalar constant, prefer using [`dfill`][@stdlib/blas/ext/base/dfill], [`sfill`][@stdlib/blas/ext/base/sfill], and/or [`gfill`][@stdlib/blas/ext/base/gfill], as, depending on the environment, these interfaces are likely to be significantly more performant.
 
 </section>
@@ -184,10 +194,10 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import round from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@deno/mod.js';
-import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@deno/mod.js';
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+var round = require( '@stdlib/math-base-special-round' );
+var randu = require( '@stdlib/random-base-randu' );
+var Float64Array = require( '@stdlib/array-float64' );
+var gfillBy = require( '@stdlib/blas-ext-base-gfill-by' );
 
 function fill() {
     var rand = round( randu()*100.0 );
@@ -219,7 +229,7 @@ console.log( x );
 
 ## See Also
 
--   <span class="package-name">[`@stdlib/blas/ext/base/gfill`][@stdlib/blas/ext/base/gfill]</span><span class="delimiter">: </span><span class="description">fill a strided array with a specified scalar constant.</span>
+-   <span class="package-name">[`@stdlib/blas-ext/base/gfill`][@stdlib/blas/ext/base/gfill]</span><span class="delimiter">: </span><span class="description">fill a strided array with a specified scalar constant.</span>
 
 </section>
 
@@ -234,7 +244,7 @@ console.log( x );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -278,7 +288,7 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 -->
 
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
-[chat-url]: https://gitter.im/stdlib-js/stdlib/
+[chat-url]: https://app.gitter.im/#/room/#stdlib-js_stdlib:gitter.im
 
 [stdlib]: https://github.com/stdlib-js/stdlib
 
@@ -296,15 +306,15 @@ Copyright &copy; 2016-2023. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64/tree/deno
+[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64
 
-[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill/tree/deno
+[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill
 
-[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill/tree/deno
+[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill
 
 <!-- <related-links> -->
 
-[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill/tree/deno
+[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill
 
 <!-- </related-links> -->
 

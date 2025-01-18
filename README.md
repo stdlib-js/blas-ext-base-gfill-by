@@ -35,25 +35,37 @@ limitations under the License.
 
 > Fill a strided array according to a provided callback function.
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/blas-ext-base-gfill-by
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
+-   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
 ```javascript
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+var gfillBy = require( '@stdlib/blas-ext-base-gfill-by' );
 ```
 
-You can also import the following named exports from the package:
+#### gfillBy( N, x, strideX, clbk\[, thisArg] )
 
-```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
-```
-
-#### gfillBy( N, x, stride, clbk\[, thisArg] )
-
-Fills a strided array `x` according to a provided callback function.
+Fills a strided array according to a provided callback function.
 
 ```javascript
 function fill( v, i ) {
@@ -69,17 +81,17 @@ gfillBy( x.length, x, 1, fill );
 The function has the following parameters:
 
 -   **N**: number of indexed elements.
--   **x**: input array. 
--   **stride**: index increment.
+-   **x**: input array.
+-   **strideX**: stride length.
 -   **clbk**: callback function.
 -   **thisArg**: execution context (_optional_).
 
-The invoked callback is provided four arguments:
+The callback function is provided the following arguments:
 
--   **value**: array element.
+-   **value**: current array element.
 -   **aidx**: array index.
 -   **sidx**: strided index (`offset + aidx*stride`).
--   **array**: input array/collection.
+-   **array**: the input array.
 
 To set the callback execution context, provide a `thisArg`.
 
@@ -102,27 +114,23 @@ var cnt = context.count;
 // returns 8
 ```
 
-The `N` and `stride` parameters determine which elements in `x` are accessed at runtime. For example, to fill every other element
+The `N` and stride parameters determine which elements in the strided array are accessed at runtime. For example, to fill every other element:
 
 ```javascript
-import floor from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-floor@deno/mod.js';
-
 function fill( v, i ) {
     return v * i;
 }
 
 var x = [ -2.0, 1.0, 3.0, -5.0, 4.0, 0.0, -1.0, -3.0 ];
-var N = floor( x.length / 2 );
 
-gfillBy( N, x, 2, fill );
+gfillBy( 4, x, 2, fill );
 // x => [ 0.0, 1.0, 3.0, -5.0, 8.0, 0.0, -3.0, -3.0 ]
 ```
 
 Note that indexing is relative to the first index. To introduce an offset, use [`typed array`][mdn-typed-array] views.
 
 ```javascript
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
-import floor from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-floor@deno/mod.js';
+var Float64Array = require( '@stdlib/array-float64' );
 
 function fill( v, i ) {
     return v * i;
@@ -133,16 +141,15 @@ var x0 = new Float64Array( [ 1.0, -2.0, 3.0, -4.0, 5.0, -6.0 ] );
 
 // Create an offset view...
 var x1 = new Float64Array( x0.buffer, x0.BYTES_PER_ELEMENT*1 ); // start at 2nd element
-var N = floor( x0.length/2 );
 
 // Fill every other element...
-gfillBy( N, x1, 2, fill );
+gfillBy( 3, x1, 2, fill );
 // x0 => <Float64Array>[ 1.0, 0.0, 3.0, -4.0, 5.0, -12.0 ]
 ```
 
-#### gfillBy.ndarray( N, x, stride, offset, clbk\[, thisArg] )
+#### gfillBy.ndarray( N, x, strideX, offsetX, clbk\[, thisArg] )
 
-Fills a strided array `x` according to a provided callback function and using alternative indexing semantics.
+Fills a strided array according to a provided callback function and using alternative indexing semantics.
 
 ```javascript
 function fill( v, i ) {
@@ -157,9 +164,9 @@ gfillBy.ndarray( x.length, x, 1, 0, fill );
 
 The function has the following additional parameters:
 
--   **offset**: starting index.
+-   **offsetX**: starting index.
 
-While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying `buffer`, the `offset` parameter supports indexing semantics based on a starting index. For example, to access only the last three elements of `x`
+While [`typed array`][mdn-typed-array] views mandate a view offset based on the underlying buffer, the offset parameter supports indexing semantics based on a starting index. For example, to access only the last three elements:
 
 ```javascript
 function fill( v, i ) {
@@ -195,26 +202,14 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 <!-- eslint no-undef: "error" -->
 
 ```javascript
-import round from 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@deno/mod.js';
-import randu from 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@deno/mod.js';
-import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
-
-function fill() {
-    var rand = round( randu()*100.0 );
-    var sign = randu();
-    if ( sign < 0.5 ) {
-        sign = -1.0;
-    } else {
-        sign = 1.0;
-    }
-    return sign * rand;
-}
+var discreteUniform = require( '@stdlib/random-base-discrete-uniform' ).factory;
+var Float64Array = require( '@stdlib/array-float64' );
+var gfillBy = require( '@stdlib/blas-ext-base-gfill-by' );
 
 var x = new Float64Array( 10 );
 console.log( x );
 
-gfillBy( x.length, x, 1, fill );
+gfillBy( x.length, x, 1, discreteUniform( -100, 100 ) );
 console.log( x );
 ```
 
@@ -245,7 +240,7 @@ console.log( x );
 
 ## Notice
 
-This package is part of [stdlib][stdlib], a standard library with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
+This package is part of [stdlib][stdlib], a standard library for JavaScript and Node.js, with an emphasis on numerical and scientific computing. The library provides a collection of robust, high performance libraries for mathematics, statistics, streams, utilities, and more.
 
 For more information on the project, filing bug reports and feature requests, and guidance on how to develop [stdlib][stdlib], see the main project [repository][stdlib].
 
@@ -262,7 +257,7 @@ See [LICENSE][stdlib-license].
 
 ## Copyright
 
-Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
+Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 </section>
 
@@ -310,15 +305,15 @@ Copyright &copy; 2016-2024. The Stdlib [Authors][stdlib-authors].
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
-[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64/tree/deno
+[@stdlib/array/complex64]: https://github.com/stdlib-js/array-complex64
 
-[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill/tree/deno
+[@stdlib/blas/ext/base/dfill]: https://github.com/stdlib-js/blas-ext-base-dfill
 
-[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill/tree/deno
+[@stdlib/blas/ext/base/sfill]: https://github.com/stdlib-js/blas-ext-base-sfill
 
 <!-- <related-links> -->
 
-[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill/tree/deno
+[@stdlib/blas/ext/base/gfill]: https://github.com/stdlib-js/blas-ext-base-gfill
 
 <!-- </related-links> -->
 

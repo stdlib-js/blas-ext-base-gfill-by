@@ -1,6 +1,6 @@
 {
   "name": "@stdlib/blas-ext-base-gfill-by",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Fill a strided array according to a provided callback function.",
   "license": "Apache-2.0",
   "author": {
@@ -46,7 +46,7 @@
     "@stdlib/array-base-filled-by": "^0.2.2",
     "@stdlib/array-complex128": "^0.3.0",
     "@stdlib/array-float64": "^0.2.2",
-    "@stdlib/complex-float64-ctor": "^0.0.3",
+    "@stdlib/complex-float64-ctor": "^0.1.0",
     "@stdlib/math-base-assert-is-nan": "^0.2.2",
     "@stdlib/math-base-special-pow": "^0.3.0",
     "@stdlib/random-base-discrete-uniform": "^0.2.1",
@@ -90,7 +90,6 @@
     "array",
     "ndarray"
   ],
-  "__stdlib__": {},
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/stdlib"

@@ -42,13 +42,13 @@ limitations under the License.
 ## Usage
 
 ```javascript
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.2.2-deno/mod.js';
 ```
 
 You can also import the following named exports from the package:
 
 ```javascript
-import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+import { ndarray } from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.2.2-deno/mod.js';
 ```
 
 #### gfillBy( N, x, strideX, clbk\[, thisArg] )
@@ -192,7 +192,7 @@ gfillBy.ndarray( 3, x, 1, x.length-3, fill );
 ```javascript
 var discreteUniform = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/random-base-discrete-uniform' ).factory;
 import Float64Array from 'https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@deno/mod.js';
-import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@deno/mod.js';
+import gfillBy from 'https://cdn.jsdelivr.net/gh/stdlib-js/blas-ext-base-gfill-by@v0.2.2-deno/mod.js';
 
 var x = new Float64Array( 10 );
 console.log( x );
